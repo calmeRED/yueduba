@@ -86,8 +86,12 @@ def export_authors(conn):
 def get_article_template():
     """读取文章模板文件"""
     template_path = TEMPLATE_DIR / "article.html"
-    with open(template_path, 'r', encoding='utf-8') as f:
-        return f.read()
+    try:
+        with open(template_path, 'r', encoding='utf-8') as f:
+            return f.read()
+    except OSError as e:
+        print(f"读取模板文件失败: {template_path} - {e}")
+        raise
 
 
 def render_template(template, data):
@@ -120,8 +124,12 @@ def generate_article_pages(conn):
 
         html = render_template(template, data)
         article_path = ARTICLE_DIR / f'{article_id}.html'
-        with open(article_path, 'w', encoding='utf-8') as f:
-            f.write(html)
+        try:
+            with open(article_path, 'w', encoding='utf-8') as f:
+                f.write(html)
+        except OSError as e:
+            print(f"写入文章页面失败: {article_path} - {e}")
+            continue
         count += 1
 
     print(f"生成文章 HTML 页面: {count} 篇 -> {ARTICLE_DIR}")
@@ -133,30 +141,39 @@ def copy_static_files():
     css_src = SRC_DIR / 'css' / 'style.css'
     css_dst = OUTPUT_DIR / 'css' / 'style.css'
     css_dst.parent.mkdir(parents=True, exist_ok=True)
-    with open(css_src, 'r', encoding='utf-8') as f:
-        with open(css_dst, 'w', encoding='utf-8') as f_out:
-            f_out.write(f.read())
-    print(f"复制静态文件: {css_src} -> {css_dst}")
+    try:
+        with open(css_src, 'r', encoding='utf-8') as f:
+            with open(css_dst, 'w', encoding='utf-8') as f_out:
+                f_out.write(f.read())
+        print(f"复制静态文件: {css_src} -> {css_dst}")
+    except OSError as e:
+        print(f"复制 CSS失败: {css_src} - {e}")
 
     # JS
     for js_file in ['utils.js', 'bookshelf.js', 'app.js']:
         src = SRC_DIR / 'js' / js_file
         dst = OUTPUT_DIR / 'js' / js_file
         dst.parent.mkdir(parents=True, exist_ok=True)
-        with open(src, 'r', encoding='utf-8') as f:
-            with open(dst, 'w', encoding='utf-8') as f_out:
-                f_out.write(f.read())
-        print(f"复制静态文件: {src} -> {dst}")
+        try:
+            with open(src, 'r', encoding='utf-8') as f:
+                with open(dst, 'w', encoding='utf-8') as f_out:
+                    f_out.write(f.read())
+            print(f"复制静态文件: {src} -> {dst}")
+        except OSError as e:
+            print(f"复制 JS 文件失败: {src} - {e}")
 
     # HTML入口页
     for html_file in ['index.html', 'random.html']:
         src = SRC_DIR / html_file
         dst = OUTPUT_DIR / html_file
         if src.exists():
-            with open(src, 'r', encoding='utf-8') as f:
-                with open(dst, 'w', encoding='utf-8') as f_out:
-                    f_out.write(f.read())
-            print(f"复制静态文件: {src} -> {dst}")
+            try:
+                with open(src, 'r', encoding='utf-8') as f:
+                    with open(dst, 'w', encoding='utf-8') as f_out:
+                        f_out.write(f.read())
+                print(f"复制静态文件: {src} -> {dst}")
+            except OSError as e:
+                print(f"复制 HTML 文件失败: {src} - {e}")
 
 
 def sanitize_filename(name):
