@@ -5,11 +5,15 @@ const Utils = {
    * @returns {Promise<Object>}
    */
   async loadJSON(url) {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Failed to load ${url}: ${response.status}`);
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Failed to load ${url}: ${response.status}`);
+      }
+      return response.json();
+    } catch (error) {
+      throw new Error(`Failed to load ${url}: ${error.message}`);
     }
-    return response.json();
   },
 
   /**
@@ -43,7 +47,7 @@ const Utils = {
    * @returns {string}
    */
   sanitizeAuthor(author) {
-    return author.replace('/', '_').replace('\\', '_');
+    return author.replace(/[/\\:*?"<>|]/g, '_');
   }
 };
 
