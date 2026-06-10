@@ -48,6 +48,17 @@ const Utils = {
    */
   sanitizeAuthor(author) {
     return author.replace(/[/\\:*?"<>|]/g, '_');
+  },
+
+  /**
+   * HTML 转义，防止 XSS
+   * @param {string} str
+   * @returns {string}
+   */
+  escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
   }
 };
 

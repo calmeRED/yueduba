@@ -35,7 +35,7 @@ const Bookshelf = {
     const container = document.getElementById('author-list');
     container.innerHTML = authors.map(author => `
       <div class="author-item" data-author="${Utils.sanitizeAuthor(author.name)}">
-        <span class="author-name">${author.name}</span>
+        <span class="author-name">${Utils.escapeHtml(author.name)}</span>
         <span class="author-count">(${author.count})</span>
       </div>
     `).join('');
@@ -90,8 +90,8 @@ const Bookshelf = {
     const listHtml = `
       <div class="article-list" id="article-list-${authorKey}">
         ${articles.map(article => `
-          <div class="article-list-item" data-id="${article.id}">
-            ${article.title}
+          <div class="article-list-item" data-id="${Utils.escapeHtml(article.id)}">
+            ${Utils.escapeHtml(article.title)}
           </div>
         `).join('')}
       </div>
