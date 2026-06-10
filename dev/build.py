@@ -12,10 +12,10 @@ from collections import defaultdict
 from pathlib import Path
 
 # 项目路径
-PROJECT_ROOT = Path(__file__).parent.resolve()
+PROJECT_ROOT = Path(__file__).parent.parent.resolve()  # 改为项目根目录
 SRC_DIR = PROJECT_ROOT / "src"
-DB_PATH = PROJECT_ROOT / ".." / "crawler" / "data" / "meiriyiwen.db"
-OUTPUT_DIR = PROJECT_ROOT / "dist"
+DB_PATH = PROJECT_ROOT / "crawler" / "data" / "meiriyiwen.db"
+OUTPUT_DIR = PROJECT_ROOT  # 输出到项目根目录
 DATA_DIR = OUTPUT_DIR / "data"
 ARTICLES_DIR = DATA_DIR / "articles"
 ARTICLE_DIR = OUTPUT_DIR / "article"
@@ -136,7 +136,7 @@ def generate_article_pages(conn):
 
 
 def copy_static_files():
-    """复制静态资源到 dist"""
+    """复制静态资源到 OUTPUT_DIR"""
     # CSS
     css_src = SRC_DIR / 'css' / 'style.css'
     css_dst = OUTPUT_DIR / 'css' / 'style.css'
