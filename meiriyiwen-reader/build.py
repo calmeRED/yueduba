@@ -14,7 +14,7 @@ from pathlib import Path
 # 项目路径
 PROJECT_ROOT = Path(__file__).parent.resolve()
 SRC_DIR = PROJECT_ROOT / "src"
-DB_PATH = PROJECT_ROOT / ".." / "meiriyiwen.db"
+DB_PATH = PROJECT_ROOT / ".." / "crawler" / "data" / "meiriyiwen.db"
 OUTPUT_DIR = PROJECT_ROOT / "dist"
 DATA_DIR = OUTPUT_DIR / "data"
 ARTICLES_DIR = DATA_DIR / "articles"
