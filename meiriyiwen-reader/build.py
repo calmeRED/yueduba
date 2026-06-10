@@ -81,6 +81,7 @@ def export_articles_by_author(conn):
         author_data[row["author"]].append({
             "id": str(row["id"]),
             "title": row["title"],
+            "author": row["author"],
             "article": row["article"],
             "url": row["url"]
         })
