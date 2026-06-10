@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日一文 - 阅读器</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">每日一文</a>
+    <button class="theme-toggle" aria-label="切换暗黑模式"></button>
+  </header>
+
+  <div class="main-layout">
+    <nav class="nav-sidebar">
+      <a href="random.html" class="nav-item">
+        <span class="icon">🎲</span>
+        随机
+      </a>
+      <span class="nav-item active">
+        <span class="icon">📚</span>
+        书架
+      </span>
+    </nav>
+
+    <aside class="author-panel">
+      <div class="panel-title">作者列表</div>
+      <div id="author-list">
+        <div class="loading">加载中...</div>
+      </div>
+    </aside>
+
+    <main class="content-area" id="main-content">
+      <div class="welcome-view">
+        <div class="welcome-icon">📖</div>
+        <h1 class="welcome-title">每日一文</h1>
+        <p class="welcome-desc">
+          从左侧选择一个作者<br>
+          开始你的阅读之旅
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/bookshelf.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // 初始化书架
+    Bookshelf.init();
+  </script>
+</body>
+</html>
