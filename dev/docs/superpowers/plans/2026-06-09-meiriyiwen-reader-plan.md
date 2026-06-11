@@ -1,4 +1,4 @@
-# 每日一文阅读器 实现计划
+# 阅读吧阅读器 实现计划
 
 > **面向 AI 代理的工作者：** 必需子技能：使用 superpowers:subagent-driven-development（推荐）或 superpowers:executing-plans 逐任务实现此计划。步骤使用复选框（`- [ ]`）语法来跟踪进度。
 
@@ -55,7 +55,7 @@ meiriyiwen-reader/
 ```python
 #!/usr/bin/env python3
 """
-每日一文阅读器构建脚本
+阅读吧阅读器构建脚本
 从 meiriyiwen.db 导出数据并生成静态站点
 """
 import sqlite3
@@ -788,12 +788,12 @@ git commit -m "feat: 添加主逻辑 app.js"
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日一文 - 阅读器</title>
+  <title>阅读吧 - 阅读器</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="header">
-    <a href="index.html" class="logo">每日一文</a>
+    <a href="index.html" class="logo">阅读吧</a>
     <button class="theme-toggle" aria-label="切换暗黑模式"></button>
   </header>
 
@@ -819,7 +819,7 @@ git commit -m "feat: 添加主逻辑 app.js"
     <main class="content-area" id="main-content">
       <div class="welcome-view">
         <div class="welcome-icon">📖</div>
-        <h1 class="welcome-title">每日一文</h1>
+        <h1 class="welcome-title">阅读吧</h1>
         <p class="welcome-desc">
           从左侧选择一个作者<br>
           开始你的阅读之旅
@@ -861,12 +861,12 @@ git commit -m "feat: 添加书架入口页 index.html"
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>随机阅读 - 每日一文</title>
+  <title>随机阅读 - 阅读吧</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="header">
-    <a href="index.html" class="logo">每日一文</a>
+    <a href="index.html" class="logo">阅读吧</a>
     <button class="theme-toggle" aria-label="切换暗黑模式"></button>
   </header>
 
@@ -928,12 +928,12 @@ git commit -m "feat: 添加随机跳转页 random.html"
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{title}} - 每日一文</title>
+  <title>{{title}} - 阅读吧</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <header class="header">
-    <a href="../index.html" class="logo">每日一文</a>
+    <a href="../index.html" class="logo">阅读吧</a>
     <button class="theme-toggle" aria-label="切换暗黑模式"></button>
   </header>
 
@@ -990,7 +990,7 @@ git commit -m "feat: 添加文章详情页模板"
 ```python
 #!/usr/bin/env python3
 """
-每日一文阅读器构建脚本
+阅读吧阅读器构建脚本
 从 meiriyiwen.db 导出数据并生成静态站点
 """
 import sqlite3
@@ -1195,12 +1195,12 @@ git commit -m "feat: 完善构建脚本，添加 HTML 生成功能"
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - 每日一文</title>
+  <title>404 - 阅读吧</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="header">
-    <a href="index.html" class="logo">每日一文</a>
+    <a href="index.html" class="logo">阅读吧</a>
     <button class="theme-toggle" aria-label="切换暗黑模式"></button>
   </header>
 
@@ -1254,7 +1254,7 @@ git commit -m "feat: 添加 404 页面"
 
 ```bash
 git add meiriyiwen-reader/
-git commit -m "feat: 完成每日一文阅读器开发"
+git commit -m "feat: 完成阅读吧阅读器开发"
 ```
 
 ---

@@ -281,7 +281,7 @@ git commit -m "feat: add drawer navigation component"
 ```html
 <header class="header">
   <button class="hamburger-btn" aria-label="打开菜单">☰</button>
-  <a href="index.html" class="logo">每日一文</a>
+  <a href="index.html" class="logo">阅读吧</a>
   <button class="theme-toggle" aria-label="切换暗黑模式"></button>
 </header>
 ```
@@ -379,7 +379,7 @@ git commit -m "feat: add drawer to index.html"
 ```html
 <header class="header">
   <button class="hamburger-btn" aria-label="打开菜单">☰</button>
-  <a href="index.html" class="logo">每日一文</a>
+  <a href="index.html" class="logo">阅读吧</a>
   <button class="theme-toggle" aria-label="切换暗黑模式"></button>
 </header>
 ```

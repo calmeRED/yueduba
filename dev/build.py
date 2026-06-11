@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-每日一文阅读器 - 构建脚本
+阅读吧阅读器 - 构建脚本
 将 meiriyiwen.db 中的文章数据导出为 JSON 文件
 """
 
@@ -217,7 +217,7 @@ def export_articles_by_author(conn):
 
 def main():
     print("=" * 50)
-    print("每日一文阅读器 - 构建脚本")
+    print("阅读吧阅读器 - 构建脚本")
     print("=" * 50)
 
     # 1. 创建目录
