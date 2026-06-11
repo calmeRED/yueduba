@@ -55,21 +55,10 @@ const Drawer = {
     }
 
     // 导航项点击后自动关闭
-    document.querySelectorAll('.drawer-nav-item, .drawer-author-item').forEach(item => {
+    document.querySelectorAll('.drawer-nav-item').forEach(item => {
       item.addEventListener('click', () => {
         // 延迟关闭，等待跳转
         setTimeout(() => this.close(), 100);
-      });
-    });
-
-    // 作者项点击（展开文章列表）
-    document.querySelectorAll('.drawer-author-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const authorKey = item.dataset.author;
-        // 复用 Bookshelf 的展开逻辑（如果可用）
-        if (typeof Bookshelf !== 'undefined' && Bookshelf.selectAuthor) {
-          Bookshelf.selectAuthor(authorKey);
-        }
       });
     });
 
@@ -79,6 +68,42 @@ const Drawer = {
         this.close();
       }
     });
+
+    // 初始化抽屉内的作者列表
+    this.initAuthors();
+  },
+
+  /**
+   * 初始化抽屉内的作者列表
+   */
+  async initAuthors() {
+    const container = document.getElementById('drawer-authors');
+    if (!container) return;
+
+    try {
+      const authors = await Utils.loadJSON('data/authors.json');
+      container.innerHTML = authors.map(author => `
+        <div class="drawer-author-item" data-author="${Utils.sanitizeAuthor(author.name)}">
+          <span class="author-name">${Utils.escapeHtml(author.name)}</span>
+          <span class="author-count">(${author.count})</span>
+        </div>
+      `).join('');
+
+      // 绑定作者点击事件
+      container.querySelectorAll('.drawer-author-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const authorKey = item.dataset.author;
+          // 复用 Bookshelf 的展开逻辑（如果可用）
+          if (typeof Bookshelf !== 'undefined' && Bookshelf.selectAuthor) {
+            Bookshelf.selectAuthor(authorKey);
+          }
+          // 延迟关闭，等待跳转
+          setTimeout(() => this.close(), 100);
+        });
+      });
+    } catch (error) {
+      console.error('Failed to load authors for drawer:', error);
+    }
   }
 };
 
